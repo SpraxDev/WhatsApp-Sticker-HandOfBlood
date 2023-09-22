@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.example.samplestickerapp"
+        applicationId "de.sprax2013.hob_wa_sticker"
         minSdkVersion 15
         targetSdkVersion 33
         versionCode 5
@@ -40,7 +40,7 @@ android {
         }
     }
 
-    namespace 'com.example.samplestickerapp'
+    namespace 'de.sprax2013.hob_wa_sticker'
     androidResources {
         //the compression of webp file during build causes problem with FileDescriptor in ContentProvider.
         noCompress 'webp'
