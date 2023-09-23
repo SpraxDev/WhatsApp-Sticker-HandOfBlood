@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdk 33
     defaultConfig {
         applicationId "de.sprax2013.hob_wa_sticker"
         minSdkVersion 21
@@ -9,15 +9,14 @@ android {
         versionCode 5
         versionName "1.1.1"
         multiDexEnabled true
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         def contentProviderAuthority = applicationId + ".stickercontentprovider"
         // Creates a placeholder property to use in the manifest.
-        manifestPlaceholders =
-                [contentProviderAuthority: contentProviderAuthority]
+        manifestPlaceholders = [contentProviderAuthority: contentProviderAuthority]
         // Adds a new field for the authority to the BuildConfig class.
-        buildConfigField("String",
-                "CONTENT_PROVIDER_AUTHORITY",
-                "\"${contentProviderAuthority}\"")
+        buildConfigField("String", "CONTENT_PROVIDER_AUTHORITY", "\"${contentProviderAuthority}\"")
     }
     buildTypes {
         debug {
@@ -46,18 +45,9 @@ android {
         //the compression of webp file during build causes problem with FileDescriptor in ContentProvider.
         noCompress 'webp'
     }
-
-    // Configures multiple APKs based on ABI.
-    // see https://developer.android.com/studio/build/configure-apk-splits#configure-abi-split
-//    splits {
-//        abi {
-//            enable true // Enables building multiple APKs per ABI.
-//            universalApk true // Specifies that we want to also generate a universal APK that includes all ABIs.
-//        }
-//    }
 }
 
-task checkDebug {
+tasks.register('checkDebug') {
     doLast {
         println("checkDebug")
         if (android.defaultConfig.applicationId.startsWith("com.whatsapp")) {
@@ -81,7 +71,7 @@ private void checkApplicationIdInDebug() {
 }
 
 
-task checkRelease {
+tasks.register('checkRelease') {
     doLast {
         println("checkRelease")
         if (android.defaultConfig.applicationId.startsWith("com.example")) {
@@ -90,7 +80,7 @@ task checkRelease {
     }
 }
 
-tasks.whenTaskAdded { task ->
+tasks.configureEach { task ->
     println(task.name)
     if (task.name.contains("assembleDebug")) {
         task.dependsOn checkDebug
