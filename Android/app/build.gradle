@@ -6,7 +6,7 @@ android {
         applicationId "de.sprax2013.hob_wa_sticker"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 6
+        versionCode 7
         versionName "1.2.0"
         multiDexEnabled true
 
