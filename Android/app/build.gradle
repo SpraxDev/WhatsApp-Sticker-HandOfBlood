@@ -28,6 +28,9 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ndk {
+                debugSymbolLevel com.android.build.gradle.internal.dsl.NdkOptions.DebugSymbolLevel.FULL.name()
+            }
         }
     }
     compileOptions {
