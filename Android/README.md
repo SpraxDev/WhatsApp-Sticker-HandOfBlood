@@ -1,3 +1,7 @@
+# Sprax notes
+* Check in the top menu 'Build' -> 'Generate (Signed) App ...'
+* `./gradlew assembleDebug` for a signed debug APK
+
 # Android Stickers Apps for WhatsApp
 
 ## Overview
